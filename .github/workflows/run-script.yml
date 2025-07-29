@@ -1,8 +1,8 @@
-name: Run Python Script Every 2 Minutes
+name: Run Python Script Every 5 Minutes
 
 on:
   schedule:
-    - cron: "*/2 * * * *"  # Every 5 minutes (UTC time) 
+    - cron: "*/5 * * * *"  # Every 5 minutes (UTC time) 
   workflow_dispatch:  # Allows manual run from GitHub UI
 
 jobs:
