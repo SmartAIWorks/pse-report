@@ -1,7 +1,8 @@
-name: Run Python Script Every 10:00AM, 12:00NN & 3:00PM
+name: Run Python Script Every 08:00AM, 10:00AM, 12:00NN & 3:00PM
 
 on:
   schedule:
+    - cron: "0 0 * * *"   # 08:00 AM PH time
     - cron: "0 2 * * *"   # 10:00 AM PH time
     - cron: "0 4 * * *"   # 12:00 NN PH time
     - cron: "0 7 * * *"   # 3:00 PM PH time
