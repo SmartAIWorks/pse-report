@@ -1,7 +1,7 @@
 import sib_api_v3_sdk
 from app.models.stock_model import Stock
 from app.services.stock_service import StockService
-from app.config import EMAIL_API_KEY, STOCK_LIST, EMAIL_SENDER, EMAIL_RECEIPIENT
+from app.config import EMAIL_API_KEY, STOCK_LIST, EMAIL_SENDER, EMAIL_RECIPIENT
 from app.services.email_service import EmailService
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -25,7 +25,7 @@ def send_email(stock_data:list[Stock]):
     email_service.send_message(subject=email_subject
                             , message=email_content
                             , sender=EMAIL_SENDER
-                            , receipient=EMAIL_RECEIPIENT)
+                            , receipient=EMAIL_RECIPIENT)
 
 stock_data = get_stock_data()
 send_email(stock_data)

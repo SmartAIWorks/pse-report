@@ -12,7 +12,7 @@ jobs:
     env:
       EMAIL_API_KEY: ${{ secrets.EMAIL_API_KEY }}
       EMAIL_SENDER: ${{ vars.EMAIL_SENDER }}
-      EMAIL_RECEIPIENT: ${{ vars.EMAIL_RECEIPIENT }}
+      EMAIL_RECIPIENT: ${{ vars.EMAIL_RECIPIENT }}
       STOCK_LIST: ${{ vars.STOCK_LIST }}
   
     steps:
