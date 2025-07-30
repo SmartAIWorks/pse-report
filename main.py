@@ -27,5 +27,10 @@ def send_email(stock_data:list[Stock]):
                             , sender=EMAIL_SENDER
                             , receipient=EMAIL_RECIPIENT)
 
-stock_data = get_stock_data()
-send_email(stock_data)
+def run():
+    stock_data = get_stock_data()
+    send_email(stock_data)
+
+
+if __name__ == "__main__":
+    run()
