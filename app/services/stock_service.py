@@ -35,7 +35,7 @@ class StockService:
           <td style="padding: 10px;">{code}</td>
           <td style="padding: 10px;">{price}</td>
           <td style="padding: 10px;">{currency}</td>
-          <td style="padding: 10px;">{percent_change}%</td>
+                    <td style="padding: 10px; {percent_change_style}"><b>{percent_change}%</b></td>
           <td style="padding: 10px;">{volume}</td>
           <td style="padding: 10px;">{value}</td>
         </tr>"""
@@ -44,6 +44,7 @@ class StockService:
                                                        ,code = stock.code
                                                        ,price=stock.price
                                                        ,currency=stock.currency
+                                                       ,percent_change_style = "color:red"  if stock.percent_change < 0 else "color:green" if stock.percent_change > 0 else ''
                                                        ,percent_change=stock.percent_change
                                                        ,volume="{:,}".format(stock.volume)
                                                        ,value = "{:,}".format(stock.price * stock.volume)) for stock in stock_data])
