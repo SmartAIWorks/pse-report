@@ -44,11 +44,12 @@ def run():
     trading_assets = stock_data + coin_data
 
     
-   # print('st', stock_data)
-    #print('cd', coin_data)
-    print('ta', trading_assets)
     send_email(asset_data = trading_assets)
 
 
 if __name__ == "__main__":
-    run()
+    try:
+        run()
+        print("Process completed successfully.")
+    except Exception as e:
+        print(f"An error occured: {e}")

@@ -21,5 +21,4 @@ def buil_email_message(trading_assets: list[TradingAsset]):
                                                        ,volume="-" if asset.volume < 0 else "{:,}".format(asset.volume)
                                                        ,value = "{:,}".format(asset.value)) for asset in trading_assets])
       
-        print(table_rows)
         return PSE_EMAIL_TEMPLATE.format(table_rows=table_rows)
