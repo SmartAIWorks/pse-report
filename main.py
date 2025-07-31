@@ -31,7 +31,7 @@ def send_email(asset_data:list[TradingAsset]):
 
     ph_time = datetime.now(ZoneInfo("Asia/Manila"))
 
-    email_subject = f"Trading Asset Summary - {ph_time.strftime("%Y-%m-%d %H:%M:%S")}"
+    email_subject = f"Trading Asset Summary - {ph_time.strftime("%Y-%m-%d %H:%M")}"
     email_service.send_message(subject=email_subject
                             , message=email_content
                             , sender=EMAIL_SENDER

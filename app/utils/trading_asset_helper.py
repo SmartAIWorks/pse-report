@@ -1,17 +1,18 @@
 from app.models.trading_asset import TradingAsset
 from app.utils.email_helper import PSE_EMAIL_TEMPLATE
 from app.config import ASSET_AVG_PRICE
+from datetime import datetime
 
 def buil_email_message(trading_assets: list[TradingAsset]):
         table_row_format =  """<tr>
-          <td style="padding: 10px;">{name}</td>
-          <td style="padding: 10px;">{code}</td>
-          <td style="padding: 10px;">{price}</td>
-          <td style="padding: 10px;">{currency}</td>
-          <td style="padding: 10px; {percent_change_style}"><b>{percent_change}%</b></td>
-          <td style="padding: 10px;">{volume}</td>
-          <td style="padding: 10px;">{value}</td>
-          <td style="padding: 10px; {percent_change_from_avg_style}"><b>{percent_change_from_avg}%</b></td>
+          <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">{name}</td>
+          <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">{code}</td>
+          <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">{price}</td>
+          <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">{currency}</td>
+          <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; {percent_change_style}"><b>{percent_change}%</b></td>
+          <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">{volume}</td>
+          <td style="padding: 10px; border-bottom: 1px solid #e0e0e0;">{value}</td>
+          <td style="padding: 10px; border-bottom: 1px solid #e0e0e0; {percent_change_from_avg_style}"><b>{percent_change_from_avg}%</b></td>
         </tr>"""
       
         table_rows =  "\n".join([table_row_format.format(name= asset.name
@@ -25,7 +26,7 @@ def buil_email_message(trading_assets: list[TradingAsset]):
                                                        ,volume="-" if asset.volume < 0 else "{:,}".format(asset.volume)
                                                        ,value = "{:,}".format(asset.value)) for asset in trading_assets])
       
-        return PSE_EMAIL_TEMPLATE.format(table_rows=table_rows)
+        return PSE_EMAIL_TEMPLATE.format(table_rows=table_rows, year = datetime.now().year)
 
 
 def parse_asset_prices():
