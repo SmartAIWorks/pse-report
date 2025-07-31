@@ -6,5 +6,6 @@ class TradingAsset(BaseModel):
     price: float
     currency: str
     percent_change:float
+    percent_change_from_avg: float
     volume: int
     value: int

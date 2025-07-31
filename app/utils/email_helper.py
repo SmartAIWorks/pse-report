@@ -11,6 +11,7 @@ PSE_EMAIL_TEMPLATE = '''<!DOCTYPE html>
           <th style="padding: 12px; border-bottom: 1px solid #ddd;">% Change</th>
           <th style="padding: 12px; border-bottom: 1px solid #ddd;">Volume</th>
           <th style="padding: 12px; border-bottom: 1px solid #ddd;">Value</th>
+          <th style="padding: 12px; border-bottom: 1px solid #ddd;">Performance</th>
         </tr>
       </thead>
       <tbody>
