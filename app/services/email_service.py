@@ -1,7 +1,5 @@
 import sib_api_v3_sdk
-
 from app.config import EMAIL_API_KEY
-from app.models.stock_model import Stock
 
 
 

@@ -1,22 +1,32 @@
-import sib_api_v3_sdk
-from app.models.stock_model import Stock
+from app.models.trading_asset import TradingAsset
 from app.services.stock_service import StockService
-from app.config import EMAIL_API_KEY, STOCK_LIST, EMAIL_SENDER, EMAIL_RECIPIENT
+from app.services.cypto_service import CryptoService
+from app.utils.trading_asset_helper import buil_email_message
+
+from app.config import EMAIL_API_KEY, STOCK_LIST, EMAIL_SENDER, EMAIL_RECIPIENT, COIN_LIST
 from app.services.email_service import EmailService
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
 stock_service = StockService()
+crypto_service = CryptoService()
 
-def get_stock_data() -> list[Stock]:
-    stock_data: list[Stock] = []
+def get_stock_data() -> list[TradingAsset]:
+    stock_data: list[TradingAsset] = []
     for code in STOCK_LIST.split(','):
         result = stock_service.get_stock_data(code)
         stock_data.append(result)
     return stock_data
 
-def send_email(stock_data:list[Stock]):
-    email_content = stock_service.build_email_message(stock_data)
+def get_crypto_data() -> list[TradingAsset]:
+    trading_asset: list[TradingAsset] = []
+    for code in COIN_LIST.split(','):
+        result = crypto_service.get_asset_data(code)
+        trading_asset.append(result)
+    return trading_asset
+
+def send_email(asset_data:list[TradingAsset]):
+    email_content = buil_email_message(trading_assets = asset_data)
     email_service = EmailService()
 
     ph_time = datetime.now(ZoneInfo("Asia/Manila"))
@@ -29,7 +39,15 @@ def send_email(stock_data:list[Stock]):
 
 def run():
     stock_data = get_stock_data()
-    send_email(stock_data)
+    coin_data =  get_crypto_data()
+
+    trading_assets = stock_data + coin_data
+
+    
+   # print('st', stock_data)
+    #print('cd', coin_data)
+    print('ta', trading_assets)
+    send_email(asset_data = trading_assets)
 
 
 if __name__ == "__main__":

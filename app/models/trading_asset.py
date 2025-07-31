@@ -1,9 +1,10 @@
 from pydantic import BaseModel
 
-class Stock(BaseModel):
+class TradingAsset(BaseModel):
     name: str
     code: str
     price: float
     currency: str
     percent_change:float
     volume: int
+    value: int
