@@ -17,8 +17,8 @@ class StockService:
         price = stock_data["price"]["amount"]
         currency = stock_data["price"]["currency"]
         percent_change = stock_data["percent_change"]
-        volume = stock_data["volume"]
-        value = volume * price
+        volume = int(round(stock_data["volume"]))
+        value = int(round(volume * price))
 
         asset_prices = parse_asset_prices()
         asset_price = asset_prices.get(code)

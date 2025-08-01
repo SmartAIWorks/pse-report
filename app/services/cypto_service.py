@@ -19,7 +19,7 @@ class CryptoService:
         currency = currency_code
         percent_change = crypto_data["price_change_percentage_24h"]
         volume = -1
-        value = crypto_data["total_volume"]
+        value = int(round(crypto_data["total_volume"]))
 
         asset_prices = parse_asset_prices()
         asset_price = asset_prices.get(code)
